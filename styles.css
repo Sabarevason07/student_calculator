@@ -12,6 +12,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-top: 60px; /* Space for the fixed navbar */
 }
 
 .navbar {
@@ -23,6 +24,7 @@ body {
     z-index: 1000;
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 .navbar ul {
@@ -30,17 +32,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 10px;
+    padding: 0;
 }
 
 .navbar li {
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .navbar a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     display: block;
     transition: background-color 0.3s;
 }
@@ -54,7 +56,7 @@ body {
     display: none;
     width: 100%;
     max-width: 400px;
-    margin: 100px 0 20px; /* Adjusted margin to account for the fixed navbar */
+    margin: 80px 0 20px; /* Adjusted margin to account for the fixed navbar */
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
@@ -141,11 +143,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .calculator-container {
-        max-width: 100%;
-        padding: 0 10px;
-    }
-
     .navbar ul {
         flex-direction: column;
         align-items: center;
@@ -154,6 +151,24 @@ body {
     .navbar li {
         margin: 5px 0;
     }
+
+    .calculator-container {
+        margin: 60px 0 20px; /* Adjusted margin for smaller screens */
+        padding: 15px;
+    }
+
+    .display {
+        font-size: 1em;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .button {
+        padding: 12px;
+        font-size: 1em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -161,11 +176,21 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .equal {
+    .equal, .zero {
         grid-column: span 3;
     }
 
-    .zero {
-        grid-column: span 3;
+    .calculator-container {
+        margin: 50px 0 20px; /* Further adjusted margin for smaller screens */
+        padding: 10px;
+    }
+
+    .display {
+        font-size: 0.9em;
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9em;
     }
 }
