@@ -1,9 +1,11 @@
+/* Base Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Body Styling */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #0066cc, #00cc66);
@@ -15,6 +17,7 @@ body {
     padding-top: 60px; /* Space for the fixed navbar */
 }
 
+/* Navbar Styling */
 .navbar {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -24,34 +27,54 @@ body {
     z-index: 1000;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 0;
+    transition: top 0.3s; /* Smooth transition for hiding/showing */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* Subtle border */
 }
 
+/* Navbar List Styling */
 .navbar ul {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-evenly; /* Equal space between items */
+    width: 100%;
     padding: 0;
+    margin: 0;
 }
 
+/* Navbar List Item Styling */
 .navbar li {
-    margin: 0 5px;
+    flex-grow: 1; /* Ensure each item grows equally */
+    text-align: center;
 }
 
+/* Navbar Links Styling */
 .navbar a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     display: block;
-    transition: background-color 0.3s;
-}
-
-.navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1.1em;
+    font-weight: 600;
     border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
 }
 
+/* Navbar Link Hover Effects */
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Navbar Link Active State */
+.navbar a.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Calculator Container Styling */
 .calculator-container {
     display: none;
     width: 100%;
@@ -63,10 +86,12 @@ body {
     text-align: center;
 }
 
+/* Show active calculator container */
 .calculator-container.active {
     display: block;
 }
 
+/* Display Styling */
 .display {
     width: 100%;
     padding: 10px;
@@ -77,12 +102,14 @@ body {
     text-align: right;
 }
 
+/* Buttons Grid Styling */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
+/* Button Styling */
 .button {
     padding: 15px;
     font-size: 1.2em;
@@ -94,10 +121,12 @@ body {
     transition: background-color 0.3s;
 }
 
+/* Button Hover Effects */
 .button:hover {
     background-color: #555;
 }
 
+/* Operator Button Styling */
 .operator {
     background-color: #ff9800;
 }
@@ -106,6 +135,7 @@ body {
     background-color: #e68900;
 }
 
+/* Equal Button Styling */
 .equal {
     background-color: #4caf50;
     grid-column: span 2;
@@ -115,10 +145,12 @@ body {
     background-color: #3e8e41;
 }
 
+/* Zero Button Styling */
 .zero {
     grid-column: span 2;
 }
 
+/* Input Group Styling */
 .input-group {
     margin-bottom: 10px;
     text-align: left;
@@ -136,24 +168,58 @@ body {
     border: none;
 }
 
+/* Result Styling */
 .result {
     margin-top: 20px;
     font-size: 1.2em;
     color: #ffeb3b;
 }
 
-@media (max-width: 768px) {
+/* Responsive Design for iPhone SE (320px wide) */
+@media (max-width: 320px) {
     .navbar ul {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center; /* Center items on very small screens */
     }
 
-    .navbar li {
-        margin: 5px 0;
+    .navbar a {
+        padding: 8px;
+        font-size: 0.9em;
     }
 
     .calculator-container {
-        margin: 60px 0 20px; /* Adjusted margin for smaller screens */
+        margin: 50px 0 20px; /* Further adjusted margin for smaller screens */
+        padding: 10px;
+    }
+
+    .display {
+        font-size: 0.9em;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .button {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}
+
+/* Responsive Design for iPhone 13 (390px wide) */
+@media (max-width: 390px) {
+    .navbar ul {
+        flex-wrap: nowrap;
+        justify-content: space-evenly; /* Equal spacing for iPhone 13 */
+    }
+
+    .navbar a {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .calculator-container {
+        margin: 70px 0 20px; /* Adjusted margin for iPhone 13 */
         padding: 15px;
     }
 
@@ -171,26 +237,33 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+/* Responsive Design for Galaxy S20 (360px wide) */
+@media (max-width: 360px) {
+    .navbar ul {
+        flex-wrap: nowrap;
+        justify-content: space-evenly; /* Equal spacing for Galaxy S20 */
+    }
+
+    .navbar a {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .calculator-container {
+        margin: 60px 0 20px; /* Adjusted margin for Galaxy S20 */
+        padding: 15px;
+    }
+
+    .display {
+        font-size: 1em;
+    }
+
     .buttons {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .equal, .zero {
-        grid-column: span 3;
-    }
-
-    .calculator-container {
-        margin: 50px 0 20px; /* Further adjusted margin for smaller screens */
-        padding: 10px;
-    }
-
-    .display {
-        font-size: 0.9em;
-    }
-
     .button {
-        padding: 10px;
-        font-size: 0.9em;
+        padding: 12px;
+        font-size: 1em;
     }
 }
