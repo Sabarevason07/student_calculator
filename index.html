@@ -215,6 +215,67 @@
                 `;
             }
         }
+        const gradePoints = {
+            'O': 10,
+            'A+': 9,
+            'A': 8,
+            'B+': 7,
+            'B': 6,
+            'C': 5,
+            'U': 0
+        };
+
+        function showCalculator(type) {
+            document.querySelectorAll('.calculator-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            document.getElementById(type).classList.add('active');
+        }
+
+        function clearDisplay(type) {
+            document.getElementById(`display-${type}`).value = '';
+            document.getElementById(`result-${type}`).innerText = '';
+        }
+
+        function deleteLast(type) {
+            const display = document.getElementById(`display-${type}`);
+            display.value = display.value.slice(0, -1);
+        }
+
+        function appendToDisplay(type, value) {
+            const display = document.getElementById(`display-${type}`);
+            display.value += value;
+        }
+
+        function calculateResult(type) {
+            const display = document.getElementById(`display-${type}`);
+            try {
+                display.value = eval(display.value) || '';
+            } catch (e) {
+                display.value = 'Error';
+            }
+            document.getElementById(`result-${type}`).innerText = display.value;
+        }
+
+        function addSubjectInput() {
+            const subjectInputs = document.getElementById('subject-inputs');
+            const totalSubjects = parseInt(document.getElementById('total-subjects').value);
+
+            subjectInputs.innerHTML = '';
+            for (let i = 1; i <= totalSubjects; i++) {
+                subjectInputs.innerHTML += `
+                    <div class="input-group">
+                        <label for="subject${i}-mark">Subject ${i} Mark:</label>
+                        <select id="subject${i}-mark" required>
+                            ${Object.keys(gradePoints).map(grade => 
+                                `<option value="${gradePoints[grade]}">${grade}</option>`).join('')}
+                        </select>
+                        <label for="subject${i}-credit">Subject ${i} Credit:</label>
+                        <input type="number" id="subject${i}-credit" step="0.01" placeholder="Enter Subject ${i} Credit" required>
+                    </div>
+                `;
+            }
+        }
 
         function calculateSGPA() {
             const totalSubjects = parseInt(document.getElementById('total-subjects').value);
