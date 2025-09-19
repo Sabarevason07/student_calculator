@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
             <li><a href="#" onclick="showCalculator('normal')">Normal Calc</a></li>
@@ -16,6 +17,7 @@
         </ul>
     </nav>
 
+    <!-- Normal Calculator -->
     <div id="normal" class="calculator-container active">
         <div class="calculator">
             <h2>Normal Calculator</h2>
@@ -44,62 +46,72 @@
         </div>
     </div>
 
+    <!-- Scientific Calculator -->
     <div id="scientific" class="calculator-container">
         <div class="calculator">
             <h2>Scientific Calculator</h2>
             <input type="text" id="display-scientific" class="display">
             <div class="buttons">
-            
-                    <button class="button button-clear" onclick="clearDisplay('scientific')">C</button>
-                    <button class="button" onclick="deleteLast('scientific')">DEL</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', '(')">(</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', ')')">)</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '7')">7</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '8')">8</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '9')">9</button>
-                    <button class="button operator" onclick="appendToDisplay('scientific', '/')">/</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '4')">4</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '5')">5</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '6')">6</button>
-                    <button class="button operator" onclick="appendToDisplay('scientific', '*')">*</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '1')">1</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '2')">2</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '3')">3</button>
-                    <button class="button operator" onclick="appendToDisplay('scientific', '-')">-</button>
-                    <button class="button zero" onclick="appendToDisplay('scientific', '0')">0</button>
-                    <button class="button" onclick="appendToDisplay('scientific', '.')">.</button>
-                    <button class="button operator" onclick="appendToDisplay('scientific', '+')">+</button>
-                    <button class="button equal" onclick="calculateResult('scientific')">=</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.sin(')">sin</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.cos(')">cos</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.tan(')">tan</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.log(')">log</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.sqrt(')">√</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', '**')">^</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', '%')">%</button>
-                    <button class="button function" onclick="appendToDisplay('scientific', 'Math.PI')">π</button>
-
+                <button class="button button-clear" onclick="clearDisplay('scientific')">C</button>
+                <button class="button" onclick="deleteLast('scientific')">DEL</button>
+                <button class="button function" onclick="appendToDisplay('scientific', '(')">(</button>
+                <button class="button function" onclick="appendToDisplay('scientific', ')')">)</button>
+                <button class="button" onclick="appendToDisplay('scientific', '7')">7</button>
+                <button class="button" onclick="appendToDisplay('scientific', '8')">8</button>
+                <button class="button" onclick="appendToDisplay('scientific', '9')">9</button>
+                <button class="button operator" onclick="appendToDisplay('scientific', '/')">/</button>
+                <button class="button" onclick="appendToDisplay('scientific', '4')">4</button>
+                <button class="button" onclick="appendToDisplay('scientific', '5')">5</button>
+                <button class="button" onclick="appendToDisplay('scientific', '6')">6</button>
+                <button class="button operator" onclick="appendToDisplay('scientific', '*')">*</button>
+                <button class="button" onclick="appendToDisplay('scientific', '1')">1</button>
+                <button class="button" onclick="appendToDisplay('scientific', '2')">2</button>
+                <button class="button" onclick="appendToDisplay('scientific', '3')">3</button>
+                <button class="button operator" onclick="appendToDisplay('scientific', '-')">-</button>
+                <button class="button zero" onclick="appendToDisplay('scientific', '0')">0</button>
+                <button class="button" onclick="appendToDisplay('scientific', '.')">.</button>
+                <button class="button operator" onclick="appendToDisplay('scientific', '+')">+</button>
+                <button class="button equal" onclick="calculateResult('scientific')">=</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.sin(')">sin</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.cos(')">cos</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.tan(')">tan</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.log(')">log</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.sqrt(')">√</button>
+                <button class="button function" onclick="appendToDisplay('scientific', '**')">^</button>
+                <button class="button function" onclick="appendToDisplay('scientific', '%')">%</button>
+                <button class="button function" onclick="appendToDisplay('scientific', 'Math.PI')">π</button>
             </div>
             <div id="result-scientific" class="result"></div>
         </div>
     </div>
 
+    <!-- Updated CGPA Calculator -->
     <div id="cgpa" class="calculator-container">
         <div class="calculator">
             <h2>CGPA Calculator</h2>
             <div id="cgpa-form">
                 <div class="input-group">
-                    <label for="total-semesters">Total Number of Semesters:</label>
-                    <input type="number" id="total-semesters" min="1" value="8">
+                    <label for="current-semester">Current Semester:</label>
+                    <input type="number" id="current-semester" min="2" placeholder="e.g. 3" required>
                 </div>
-                <div id="sgpa-inputs"></div>
-                <button class="button" onclick="addSGPAInput()">Add Semesters</button>
-                <button class="button equal" onclick="calculateCGPA()">Calculate CGPA</button>
+
+                <div class="input-group">
+                    <label for="old-cgpa">Old CGPA (up to previous semester):</label>
+                    <input type="number" id="old-cgpa" step="0.01" placeholder="e.g. 7.8" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="current-sgpa">Current Semester SGPA:</label>
+                    <input type="number" id="current-sgpa" step="0.01" placeholder="e.g. 8.2" required>
+                </div>
+
+                <button class="button equal" onclick="calculateNewCGPA()">Calculate CGPA</button>
             </div>
             <div id="cgpa-result" class="result"></div>
         </div>
     </div>
 
+    <!-- SGPA Calculator -->
     <div id="sgpa" class="calculator-container">
         <div class="calculator">
             <h2>SGPA Calculator</h2>
@@ -116,22 +128,19 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-
+        // Navbar scroll effect
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');
 
         window.addEventListener('scroll', function() {
             const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (currentScroll > lastScrollTop) {
-                navbar.style.top = "-60px"; // Hide the navbar (adjust this value if necessary)
-            } else {
-                navbar.style.top = "0"; // Show the navbar
-            }
+            navbar.style.top = currentScroll > lastScrollTop ? "-60px" : "0";
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
 
+        // Show different calculator
         function showCalculator(type) {
             document.querySelectorAll('.calculator-container').forEach(container => {
                 container.classList.remove('active');
@@ -139,6 +148,7 @@
             document.getElementById(type).classList.add('active');
         }
 
+        // Normal & Scientific Calculator Functions
         function clearDisplay(type) {
             document.getElementById(`display-${type}`).value = '';
             document.getElementById(`result-${type}`).innerText = '';
@@ -164,57 +174,29 @@
             document.getElementById(`result-${type}`).innerText = display.value;
         }
 
-        function addSGPAInput() {
-            const sgpaInputs = document.getElementById('sgpa-inputs');
-            const totalSemesters = parseInt(document.getElementById('total-semesters').value);
+        // Updated CGPA Calculation
+        function calculateNewCGPA() {
+            const currentSemester = parseInt(document.getElementById('current-semester').value);
+            const oldCGPA = parseFloat(document.getElementById('old-cgpa').value);
+            const currentSGPA = parseFloat(document.getElementById('current-sgpa').value);
+            const resultDiv = document.getElementById('cgpa-result');
 
-            sgpaInputs.innerHTML = '';
-            for (let i = 1; i <= totalSemesters; i++) {
-                sgpaInputs.innerHTML += `
-                    <div class="input-group">
-                        <label for="sgpa${i}">SGPA ${i}:</label>
-                        <input type="number" id="sgpa${i}" step="0.01" placeholder="Enter SGPA ${i}" required>
-                    </div>
-                `;
+            if (isNaN(currentSemester) || currentSemester < 2) {
+                resultDiv.innerText = 'Error: Current semester must be at least 2.';
+                return;
             }
-        }
-
-        function calculateCGPA() {
-            const totalSemesters = parseInt(document.getElementById('total-semesters').value);
-            let totalSGPA = 0;
-
-            for (let i = 1; i <= totalSemesters; i++) {
-                const sgpa = parseFloat(document.getElementById(`sgpa${i}`).value);
-                if (!isNaN(sgpa)) {
-                    totalSGPA += sgpa;
-                }
-            }
-
-            if (totalSemesters === 0) {
-                document.getElementById('cgpa-result').innerText = 'Error: Total semesters cannot be zero';
+            if (isNaN(oldCGPA) || isNaN(currentSGPA)) {
+                resultDiv.innerText = 'Error: Please enter valid numbers for Old CGPA and Current SGPA.';
                 return;
             }
 
-            const cgpa = totalSGPA / totalSemesters;
-            document.getElementById('cgpa-result').innerText = `CGPA: ${cgpa.toFixed(2)}`;
+            const previousSemester = currentSemester - 1;
+            const newCGPA = ((oldCGPA * previousSemester) + currentSGPA) / currentSemester;
+
+            resultDiv.innerText = `Updated CGPA: ${newCGPA.toFixed(2)}`;
         }
 
-        function addSubjectInput() {
-            const subjectInputs = document.getElementById('subject-inputs');
-            const totalSubjects = parseInt(document.getElementById('total-subjects').value);
-
-            subjectInputs.innerHTML = '';
-            for (let i = 1; i <= totalSubjects; i++) {
-                subjectInputs.innerHTML += `
-                    <div class="input-group">
-                        <label for="subject${i}-mark">Subject ${i} Mark:</label>
-                        <input type="number" id="subject${i}-mark" step="0.01" placeholder="Enter Subject ${i} Mark" required>
-                        <label for="subject${i}-credit">Subject ${i} Credit:</label>
-                        <input type="number" id="subject${i}-credit" step="0.01" placeholder="Enter Subject ${i} Credit" required>
-                    </div>
-                `;
-            }
-        }
+        // SGPA Calculator
         const gradePoints = {
             'O': 10,
             'A+': 9,
@@ -225,38 +207,6 @@
             'U': 0
         };
 
-        function showCalculator(type) {
-            document.querySelectorAll('.calculator-container').forEach(container => {
-                container.classList.remove('active');
-            });
-            document.getElementById(type).classList.add('active');
-        }
-
-        function clearDisplay(type) {
-            document.getElementById(`display-${type}`).value = '';
-            document.getElementById(`result-${type}`).innerText = '';
-        }
-
-        function deleteLast(type) {
-            const display = document.getElementById(`display-${type}`);
-            display.value = display.value.slice(0, -1);
-        }
-
-        function appendToDisplay(type, value) {
-            const display = document.getElementById(`display-${type}`);
-            display.value += value;
-        }
-
-        function calculateResult(type) {
-            const display = document.getElementById(`display-${type}`);
-            try {
-                display.value = eval(display.value) || '';
-            } catch (e) {
-                display.value = 'Error';
-            }
-            document.getElementById(`result-${type}`).innerText = display.value;
-        }
-
         function addSubjectInput() {
             const subjectInputs = document.getElementById('subject-inputs');
             const totalSubjects = parseInt(document.getElementById('total-subjects').value);
@@ -265,13 +215,13 @@
             for (let i = 1; i <= totalSubjects; i++) {
                 subjectInputs.innerHTML += `
                     <div class="input-group">
-                        <label for="subject${i}-mark">Subject ${i} Mark:</label>
+                        <label for="subject${i}-mark">Subject ${i} Grade:</label>
                         <select id="subject${i}-mark" required>
                             ${Object.keys(gradePoints).map(grade => 
                                 `<option value="${gradePoints[grade]}">${grade}</option>`).join('')}
                         </select>
                         <label for="subject${i}-credit">Subject ${i} Credit:</label>
-                        <input type="number" id="subject${i}-credit" step="0.01" placeholder="Enter Subject ${i} Credit" required>
+                        <input type="number" id="subject${i}-credit" step="0.01" placeholder="Enter Credit" required>
                     </div>
                 `;
             }
@@ -279,8 +229,7 @@
 
         function calculateSGPA() {
             const totalSubjects = parseInt(document.getElementById('total-subjects').value);
-            let totalMarks = 0;
-            let totalCredits = 0;
+            let totalMarks = 0, totalCredits = 0;
 
             for (let i = 1; i <= totalSubjects; i++) {
                 const mark = parseFloat(document.getElementById(`subject${i}-mark`).value);
@@ -292,13 +241,14 @@
                 }
             }
 
+            const resultDiv = document.getElementById('sgpa-result');
             if (totalCredits === 0) {
-                document.getElementById('sgpa-result').innerText = 'Error: Total credits cannot be zero';
+                resultDiv.innerText = 'Error: Total credits cannot be zero.';
                 return;
             }
 
             const sgpa = totalMarks / totalCredits;
-            document.getElementById('sgpa-result').innerText = `SGPA: ${sgpa.toFixed(2)}`;
+            resultDiv.innerText = `SGPA: ${sgpa.toFixed(2)}`;
         }
     </script>
 </body>
